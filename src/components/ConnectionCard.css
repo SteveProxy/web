@@ -1,0 +1,24 @@
+.Connection {
+    text-align: center;
+    padding: 48px 24px;
+}
+
+.Connection-Avatars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 16px;
+}
+
+.Connection-Ellipses {
+    display: flex;
+    margin: 0 24px;
+}
+
+.Connection-Ellipse {
+    width: 4px;
+    height: 4px;
+    margin: 0 2px;
+    background-color: #888888;
+    border-radius: 50%;
+}

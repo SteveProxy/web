@@ -1,0 +1,31 @@
+.Panel__in,
+.SplitLayout {
+    background: var(--background_image_load_color) var(--background_image) no-repeat fixed center center;
+    background-size: cover;
+    height: auto !important;
+    transition: background 1s;
+}
+
+.Avatar,
+.Title,
+.Headline {
+    user-select: none;
+}
+
+.Card {
+    overflow: hidden;
+}
+
+:root {
+    --background_image: url(assets/background_light.png);
+    --background_image_load_color: #6098fe;
+}
+
+body[scheme="space_gray"] {
+    --background_image: url(assets/background_dark.png);
+    --background_image_load_color: #0c0b0a;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
