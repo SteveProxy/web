@@ -2,19 +2,22 @@ import React, { useState } from "react";
 import VKBridge from "@vkontakte/vk-bridge";
 import { ConfigProvider, useAdaptivity, ViewWidth, platform as getPlatform } from "@vkontakte/vkui";
 
-import { AppearanceContext, schemes } from "../hooks";
+import { AppearanceContext } from "../hooks";
 
 export function AppearanceProvider({ children }) {
 
     const { viewWidth } = useAdaptivity();
 
-    const getStorageScheme = () => {
+    /*const getStorageScheme = () => {
         const storageScheme = localStorage.getItem("scheme");
 
         return schemes.includes(storageScheme) ? storageScheme : "bright_light";
-    };
+    };*/
 
-    const [scheme, setScheme] = useState(getStorageScheme());
+    const currentHour = new Date()
+        .getHours();
+
+    const [scheme, setScheme] = useState(currentHour >= 8 && currentHour < 19 ? "bright_light" : "space_gray");
     const [platform, setPlatform] = useState(viewWidth === ViewWidth.DESKTOP ? "android" : getPlatform());
 
     const toggleScheme = () => {

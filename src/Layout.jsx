@@ -1,10 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { SplitCol, SplitLayout, View, Root, ViewWidth, useAdaptivity } from "@vkontakte/vkui";
 import { useStructure, useSwipeBack } from "@unexp/router";
 
-import { Connection } from "./panels";
-
-import { useAppearance } from "./hooks";
+import { Connection, Error } from "./panels";
 
 const connections = ["vk", "spotify"];
 const panels = [];
@@ -13,7 +11,6 @@ export function Layout() {
 
     const path = window.location.pathname.replaceAll("/", "");
 
-    const { setScheme } = useAppearance();
     const { viewWidth } = useAdaptivity();
     const { popout, view, panel } = useStructure({
         view: "home",
@@ -27,13 +24,6 @@ export function Layout() {
 
     const isDesktop = viewWidth > ViewWidth.MOBILE;
     const width = isDesktop ? "560px" : "100%";
-
-    useEffect(() => {
-        const currentHour = new Date()
-            .getHours();
-
-        setScheme(currentHour >= 8 && currentHour < 19 ? "bright_light" : "space_gray");
-    }, []);
 
     return (
         <SplitLayout style={{ justifyContent: "center" }}>
@@ -51,6 +41,7 @@ export function Layout() {
                           {...useSwipeBack()}
                     >
                         <Connection id="connection"/>
+                        <Error id="404"/>
                     </View>
                 </Root>
             </SplitCol>
