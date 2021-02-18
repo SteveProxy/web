@@ -21,7 +21,7 @@ export function Connection({ id }) {
         "123"
         :
         params.get("code");
-    const command = `/${connection} auth ${payload ?? ""}`;
+    const command = `.${connection} auth ${payload ?? ""}`;
 
     return (
         <Panel id={id}>
