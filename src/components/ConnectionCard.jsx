@@ -35,29 +35,40 @@ export function ConnectionCard({ logo, title, command }) {
                     title
                 }
             </Title>
-            <Title level="3"
-                   weight="regular"
-                   style={{ marginBottom: 48 }}
-            >
-                Используйте эту команду в чате, чтобы авторизоваться в плагине.
-            </Title>
-            <Input value={command}
-                   style={{ marginBottom: 16 }}
-            />
-            <CopyToClipboard text={command}>
-                <Button size="l"
-                        stretched
-                        disabled={!copyable}
-                        onClick={() => setCopyable(false)}
-                >
-                    {
-                        copyable ?
-                            "Скопировать команду"
-                            :
-                            "Команда скопирована"
-                    }
-                </Button>
-            </CopyToClipboard>
+            {
+                command ?
+                    <>
+                        <Title level="3"
+                               weight="regular"
+                               style={{ marginBottom: 48 }}
+                        >
+                            Используйте эту команду в чате, чтобы авторизоваться в плагине.
+                        </Title>
+                        <Input value={command}
+                               style={{ marginBottom: 16 }}
+                        />
+                        <CopyToClipboard text={command}>
+                            <Button size="l"
+                                    stretched
+                                    disabled={!copyable}
+                                    onClick={() => setCopyable(false)}
+                            >
+                                {
+                                    copyable ?
+                                        "Скопировать команду"
+                                        :
+                                        "Команда скопирована"
+                                }
+                            </Button>
+                        </CopyToClipboard>
+                    </>
+                    :
+                    <Title level="3"
+                           weight="regular"
+                    >
+                        Авторизация отменена.
+                    </Title>
+            }
         </div>
     );
 }

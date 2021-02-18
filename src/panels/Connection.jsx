@@ -30,7 +30,7 @@ export function Connection({ id }) {
                     <Card>
                         <ConnectionCard logo={logo}
                                         title={title}
-                                        command={command}
+                                        command={payload && command}
                         />
                     </Card>
                 </Div>
