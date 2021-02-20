@@ -1,6 +1,7 @@
 import fs from "fs";
 import express from "express";
 import rateLimit from "express-rate-limit";
+import bodyParser from "body-parser";
 
 import { endpoints } from "./endpoints";
 
@@ -14,6 +15,7 @@ const limiter = rateLimit({
 });
 
 app.use(limiter);
+app.use(bodyParser.urlencoded({ extended: true }));
 
 endpoints.forEach((Endpoint) => {
     const endpoint = new Endpoint();

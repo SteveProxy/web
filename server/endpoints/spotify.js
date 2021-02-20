@@ -15,12 +15,12 @@ export class Spotify extends Endpoint {
     handler(request, response, next) {
         const { query: { code, state } } = request;
 
-        if (code && state) {
-            if ((code.length > 20 && code.length <= 500) && state.length === 6) {
-                spotify.set(state, code);
+        if ((code?.length > 20 && code?.length <= 500) && state?.length === 6) {
+            spotify.set(state, code);
 
-                return next();
-            }
+            console.log(spotify)
+
+            return next();
         }
 
         return response.status(400)
@@ -38,8 +38,8 @@ export class SpotifySwap extends Endpoint {
         super("/spotify", "post");
     }
 
-    handler({ query: { state } }, response) {
-        if (state && state.length === 6) {
+    handler({ body: { state } }, response) {
+        if (state?.length === 6) {
             const code = spotify.take(state);
 
             if (code) {
