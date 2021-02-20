@@ -12,7 +12,9 @@ export class Spotify extends Endpoint {
         super("/spotify", "get");
     }
 
-    handler({ query: { code, state } }, response, next) {
+    handler(request, response, next) {
+        const { query: { code, state } } = request;
+
         if (code && state) {
             if ((code.length > 20 && code.length <= 500) && state.length === 6) {
                 spotify.set(state, code);
