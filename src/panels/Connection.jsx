@@ -20,7 +20,7 @@ export function Connection({ id }) {
     const payload = connection === "vk" ?
         "123"
         :
-        params.get("code");
+        params.get("state");
     const command = `.${connection} auth ${payload ?? ""}`;
 
     return (
