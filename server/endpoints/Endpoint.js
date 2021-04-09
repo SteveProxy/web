@@ -1,7 +1,11 @@
 export class Endpoint {
 
-    constructor(path, type = "use") {
+    constructor(path, types = "use") {
+        if (!Array.isArray(types)) {
+            types = [types];
+        }
+
         this.path = path;
-        this.type = type;
+        this.types = types;
     }
 }

@@ -1,7 +1,7 @@
 import fs from "fs";
 import express from "express";
-import rateLimit from "express-rate-limit";
 import bodyParser from "body-parser";
+import rateLimit from "express-rate-limit";
 
 import { endpoints } from "./endpoints";
 
@@ -11,7 +11,7 @@ app.set("trust proxy", 1);
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 500 // limit each IP to 100 requests per windowMs
+    max: 250 // limit each IP
 });
 
 app.use(limiter);
@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 endpoints.forEach((Endpoint) => {
     const endpoint = new Endpoint();
 
-    app[endpoint.type](endpoint.path, endpoint.handler);
+    endpoint.types.forEach((type) => app[type](endpoint.path, endpoint[type]));
 });
 
 app.use(express.static("./build", {
