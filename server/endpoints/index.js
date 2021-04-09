@@ -1,6 +1,5 @@
-import { Spotify, SpotifySwap } from "./spotify";
+import { Spotify } from "./spotify";
 
 export const endpoints = [
-    Spotify,
-    SpotifySwap
+    Spotify
 ];
