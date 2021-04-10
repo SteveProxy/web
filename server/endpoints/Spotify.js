@@ -6,7 +6,7 @@ import { Endpoint } from "./Endpoint";
 const spotify = new SpotifyAPI({
     clientId: process.env.SPOTIFY_ID,
     clientSecret: process.env.SPOTIFY_SECRET,
-    redirectUri: process.env.SPOTIFY_REDIRECT
+    redirectUri: `${process.env.HOMEPAGE}/spotify/`
 });
 
 const cache = new NodeCache({
