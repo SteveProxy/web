@@ -18,7 +18,7 @@ export function Connection({ id }) {
     const params = new URLSearchParams(window.location.search);
 
     const payload = connection === "vk" ?
-        "123"
+        "123456"
         :
         params.get("state");
     const command = `.${connection} auth ${payload ?? ""}`;
