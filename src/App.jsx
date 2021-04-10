@@ -1,6 +1,5 @@
 import React from "react";
 import { AdaptivityProvider, AppRoot } from "@vkontakte/vkui";
-import { Router } from "@unexp/router";
 
 import { AppearanceProvider } from "./components";
 
@@ -10,14 +9,12 @@ import "./App.css";
 
 export function App() {
     return (
-        <Router>
-            <AdaptivityProvider>
-                <AppearanceProvider>
-                    <AppRoot>
-                        <Layout/>
-                    </AppRoot>
-                </AppearanceProvider>
-            </AdaptivityProvider>
-        </Router>
+        <AdaptivityProvider>
+            <AppearanceProvider>
+                <AppRoot>
+                    <Layout/>
+                </AppRoot>
+            </AppearanceProvider>
+        </AdaptivityProvider>
     );
 }
