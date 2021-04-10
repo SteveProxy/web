@@ -20,9 +20,7 @@ export class Spotify extends Endpoint {
         super("/spotify", ["get", "post"]);
     }
 
-    get(request, response, next) {
-        const { query: { code, state } } = request;
-
+    get({ query: { code, state } }, response, next) {
         if ((code?.length > 20 && code?.length <= 500) && state?.length === 6 && !cache.has(state)) {
             try {
                 cache.set(state, code);
