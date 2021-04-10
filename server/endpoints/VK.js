@@ -10,15 +10,13 @@ const cache = new NodeCache({
 export class VK extends Endpoint {
 
     constructor() {
-        super("/vk", "get");
+        super("/vk", "post");
     }
 
-    get({ query: { code, state } }, response, next) {
-        if ((code?.length > 20 && code?.length <= 500) && state?.length === 6 && !cache.has(state)) {
+    post({ body: { token, state } }, response) {
+        if ((token?.length > 20 && token?.length <= 500) && state?.length === 6 && !cache.has(state)) {
             try {
-                cache.set(state, code);
-
-                return next();
+                return cache.set(state, token);
             } catch {}
         }
 
