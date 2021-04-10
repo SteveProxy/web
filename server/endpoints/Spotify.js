@@ -61,15 +61,15 @@ export class Spotify extends Endpoint {
                                 })
                             )
                     );
-            } else {
-                return response.status(400)
-                    .end(
-                        JSON.stringify({
-                            error: "Invalid state or it expired.",
-                            statusCode: 400
-                        })
-                    );
             }
+
+            return response.status(400)
+                .end(
+                    JSON.stringify({
+                        error: "Invalid state or it expired.",
+                        statusCode: 400
+                    })
+                );
         }
 
         if (token?.length > 10 && token?.length < 1000) {

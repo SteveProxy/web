@@ -20,6 +20,26 @@ export class VK extends Endpoint {
             } catch {}
         }
 
+        if (state?.length === 6) {
+            const token = cache.take(state);
+
+            if (token) {
+                return response.status(200)
+                    .end(
+                        JSON.stringify({
+                            token
+                        })
+                    );
+            }
+
+            return response.status(400)
+                .end(
+                    JSON.stringify({
+                        error: "Invalid state or it expired."
+                    })
+                );
+        }
+
         return response.status(400)
             .end(
                 JSON.stringify({
