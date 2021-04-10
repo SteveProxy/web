@@ -15,6 +15,7 @@ export function ConnectionCard({ logo, title, command }) {
             <div className="Connection-Avatars">
                 <Avatar size={80}
                         src={logo}
+                        mode="app"
                         shadow={false}
                 />
                 <div className="Connection-Ellipses">
