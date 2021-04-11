@@ -1,4 +1,4 @@
-import { Spotify } from "./spotify";
+import { Spotify } from "./Spotify";
 import { VK } from "./VK"
 
 export const endpoints = [
