@@ -1,5 +1,4 @@
-import axios from "axios";
-import React, { useEffect } from "react";
+import React from "react";
 import { Card, Div, Panel } from "@vkontakte/vkui";
 
 import { ConnectionCard } from "../components";
@@ -20,20 +19,6 @@ export function Connection({ id }) {
 
     const state = params.get("state");
     const command = `.${connection} auth ${state ?? ""}`;
-
-    useEffect(() => {
-        switch (connection) {
-            case "vk": {
-                const token = params.get("access_token");
-
-                if (token) {
-                    axios.post(`${process.env.HOMEPAGE}/vk`, `token=${token}&state=${state}`);
-                }
-
-                break;
-            }
-        }
-    }, []);
 
     return (
         <Panel id={id}>
