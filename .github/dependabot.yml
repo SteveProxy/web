@@ -1,0 +1,23 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: core-js
+    versions:
+    - 3.10.2
+    - 3.9.0
+  - dependency-name: react
+    versions:
+    - 17.0.2
+  - dependency-name: "@vkontakte/icons"
+    versions:
+    - 1.80.0
+    - 1.82.0
+    - 1.87.0
+  - dependency-name: "@vkontakte/vkui"
+    versions:
+    - 4.2.1
